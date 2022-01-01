@@ -12,7 +12,11 @@
 #include "Keyboard.h"
 
 Carte::Carte(Jeu* jeu) : gpJeu(jeu), levely(0) {
+#ifdef OPENDINGUX
+    image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 16, 0, 0, 0, 0);
+#else
     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+#endif
 }
 
 Carte::~Carte() {

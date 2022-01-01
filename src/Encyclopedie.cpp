@@ -11,7 +11,11 @@
 #include "Encyclopedie.h"
 
 Encyclopedie::Encyclopedie(Jeu* jeu) : gpJeu(jeu), page(0), gpEnnemi(0), gpPnj(0) {
+#ifdef OPENDINGUX
+    image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 16, 0, 0, 0, 0);
+#else
     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+#endif
     imageCadre = IMG_Load("data/images/logos/cadres.png");
     gpEnnemi = new Ennemi(gpJeu, 0, 0, 0, true);
     gpPnj = new Pnj(gpJeu, 8, gpJeu->getPhg(0)+128+8+((48-16)/2), 

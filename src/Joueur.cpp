@@ -10,8 +10,6 @@
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 
 #include "Menu.h"
 #include "Joueur.h"
@@ -95,10 +93,18 @@ void Joueur::save() {
     //if (!gpJeu->isDonjon()) {zone = 21; xd = 86; yd = 24; dird = S;}
     int tps = temps + ((SDL_GetTicks()-TimeB)/1000);
     if (tps > 359999) tps = 359999;
-    
     ostringstream im;
     im << numSave;
+#ifdef GCWZERO
+	string pHome;
+	pHome = getenv("HOME");
+	string savePath(pHome + "/.zelda3T_US/save/");
+	system(("mkdir -p " + savePath).c_str());
+    ofstream f((savePath + "3t" + im.str() + ".dat").c_str(),ios::out | ios::binary);
+#else
     ofstream f(("data/save/3t" + im.str() + ".dat").c_str(),ios::out | ios::binary);
+#endif
+
     f.write((char *)&tps,sizeof(int));
     f.write((char *)&zone,sizeof(int));
     f.write((char *)&xd,sizeof(int));
@@ -166,8 +172,14 @@ void Joueur::load() {
     int zone;
     ostringstream im;
     im << numSave;
-
+#ifdef GCWZERO
+	string pHome;
+	pHome = getenv("HOME");
+	string savePath(pHome + "/.zelda3T_US/save/");
+	ifstream f((savePath + "3t" + im.str() + ".dat").c_str(),ios::in | ios::binary);
+#else
     ifstream f(("data/save/3t" + im.str() + ".dat").c_str(),ios::in | ios::binary);
+#endif
     if(!f.is_open()) return;
     f.read((char *)&temps,sizeof(int));
     f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);

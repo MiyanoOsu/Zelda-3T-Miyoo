@@ -14,7 +14,9 @@
 class Listable {
     public :
         Listable();
-        ~Listable();
+        //~Listable();
+		//Shin-NiL (hmn) memory leak correction
+        virtual ~Listable();
         int size();
         void ajout(Listable* l); // ajout d'un élément seul
         void enleve(Listable* l); //enlève et libère l'élément

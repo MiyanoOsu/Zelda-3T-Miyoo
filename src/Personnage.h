@@ -19,7 +19,9 @@
 class Personnage : public Listable {
     public :
         Personnage();
-        ~Personnage();
+        //~Personnage();
+		//Shin-NiL (hmn) memory leak correction
+		virtual ~Personnage();
         void saveEmpl();
         int getX();
         int getY();

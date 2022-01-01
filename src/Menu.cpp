@@ -458,8 +458,12 @@ void Menu::drawInventaire(SDL_Surface* gpScreen) {
     int dec = 200-val;
     
     Joueur* gpJoueur = gpJeu->getJoueur();
-    
+
+#ifdef OPENDINGUX    
+    gpJeu->affiche(gpScreen, "Y", 20-dec,20);
+#else
     gpJeu->affiche(gpScreen, "X", 20-dec,20);
+#endif
 
     SDL_Rect src;
     SDL_Rect dst;

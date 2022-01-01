@@ -466,6 +466,8 @@ void Projectile::dessinTrainee(SDL_Surface* gpScreen) {
 void Projectile::changeType(int type) {
     id = type;
     SDL_FreeSurface(image);
+    //Shin-NiL (hmn) memory leak correction
+    image = NULL;
     switch (type) {
         case 1 : //flèche
         case 2 : //flèche argent

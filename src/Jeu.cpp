@@ -47,10 +47,26 @@ Jeu::~Jeu() {
     delete gpEnnemi;
     delete gpPiege;
     delete gpPnj;
+//Shin-NiL memory leak correction
+    if (imageObjets) SDL_FreeSurface(imageObjets);
 }
 
 void Jeu::init(int save) {
     zone=79; zoneOld=-1;
+    
+    // clean all previous references - Shin-NiL
+    if (gpProjectile) delete gpProjectile;
+    if (gpObjet) delete gpObjet;
+    if (gpSnipe) delete gpSnipe;
+    if (gpCaisse) delete gpCaisse;
+    if (gpEnnemi) delete gpEnnemi;
+    if (gpPiege) delete gpPiege;
+    if (gpPnj) delete gpPnj;
+    if (gpJoueur) delete gpJoueur;
+    if (gpMonde) delete gpMonde;
+    if (gpMenu) delete gpMenu;
+    if (gpStatut) delete gpStatut;
+    
     gpProjectile = new Projectile(this, 0, N, 0, 0, 0);
     gpObjet = new Objet(this, 0, 0, 0, 0);
     gpSnipe = new Snipe(this, 0, 0, 0, 0, 0);
@@ -6028,11 +6044,7 @@ void Jeu::testFin() {
                 gpMonde->transitFull(68, 152+320*4, 200+240*2);
             if (((int)(gpJoueur->getX()/16))==53 && ((int)((gpJoueur->getY()-8)/16))==30) {
                 gpAudio->playSound(11);
-                if (!gpJoueur->getCoffre(15,11) && gpJoueur->getPosWagon() != 1) {
-                    gpJoueur->setPosWagon(1);
-                }
-                gpMonde->transitFull(68, 152+320*3, 120+240, S);
-            }
+                gpMonde->transitFull(68, 152+320*3, 120+240, S);}
             if (((int)(gpJoueur->getX()/16))==122 && ((int)((gpJoueur->getY()-8)/16))==34)
                 gpMonde->transitFull(48, 152+320*3, 200+240*4);
             break;

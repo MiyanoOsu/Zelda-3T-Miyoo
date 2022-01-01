@@ -247,7 +247,7 @@ void Statut::drawVie(SDL_Surface* gpScreen) {
     //life
     src.h = 7+1;src.w = 44;
     dst.x = 250;dst.y = 10;
-    src.x=158;src.y=0+17;
+    src.x=158;src.y=0;
     SDL_BlitSurface(imageStatut, &src, gpScreen, &dst);
     
     for(int i=0; i < gpJoueur->getVieMax()/2; i++) {

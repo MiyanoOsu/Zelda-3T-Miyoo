@@ -91,7 +91,7 @@ void Texte::chercheText() {
         case 43 : texte = "..."; idsuiv=44; break;
         case 44 : texte = "The castle. To the east, don't tell me you've forgotten?"; break;
         case 45 : texte = "Hem Hem..."; idsuiv=46; break;
-        case 46 : texte = "TUTORIAL : Press Space near someone to talk with him, or near a sign to read it."; break;
+        case 46 : texte = "TUTORIAL : Press A near someone to talk with him, or near a sign to read it."; break;
         case 47 : texte = "You didn't learn any song.";
             if (gpJeu->getJoueur()->hasMelodie(0)) {id=48; chercheText();break;}
             if (gpJeu->getJoueur()->hasMelodie(1)) {id=57; chercheText();break;}
@@ -552,7 +552,7 @@ void Texte::chercheText() {
             || gpJeu->getJoueur()->getTroc(M_PARFUM)<1) idsuiv=75;
             break;
         case 266 : texte = "The Pegasus boots for a tapestry and a perfume? *              yes              NO ?"; idsuiv=76; break;
-        case 267 : texte = "You got the Pegasus boots! *Hold Shift or press Capslock to run!"; break;
+        case 267 : texte = "You got the Pegasus boots! *Hold B to run!"; break;
         case 268 : 
             texte = "A perfume for 3 feathers and 4 bags of rice? **              YES ?            no  "; 
             if (gpJeu->getJoueur()->getTroc(M_PLUME)<3
@@ -639,7 +639,7 @@ void Texte::chercheText() {
         case 313 : texte = "You traded the little bell for an axe!"; break;
         case 314 : texte = "Ho! Ho! Ho!"; buffer="That's all very well, but how do I go home?"; break;
         case 315 : texte = "TUTORIAL :*A hit on one of these colored sphere switch the stumbling blocks."; break;
-        case 316 : texte = "You have found a sword!!!*Use it with the key Z (or W), or keep Z (or W) holded to charge a spin attack!"; break;
+	case 316 : texte = "You have found a sword!!!*Use it with A, or keep A holded to charge a spin attack!"; break;      
         case 317 : texte = "TUTORIAL :*Falling in a hole will bring you at the floor below. However, if there is no floor below like here, a fall will make you lose life and will bring at the entry of the area, so be careful!"; break;
         case 318 : texte = "TUTORIAL :*During the game, you might see some spots apparently inaccessible, like the platform underneath. You will then have"; buffer="to come back later with more equipment to reach it."; break;
         case 319 : texte = "@+@+@+@+@+@+@@@+*@=++=@=+@=+@=+=@*+@+@+@+=+="; break;
@@ -648,7 +648,7 @@ void Texte::chercheText() {
         case 322 : texte = "At the dawn of cataclysm, shall the heroe find this stele. The Pendents of Courage, Wisdom and Power in his possession, his only chance to save the world will arise."; break;
         case 323 : texte = "..."; buffer="I'm afraid we'll have to forget about the ocarina for a moment...*If this stele says the truth, you have to gather the 3 pendents as soon as possible..."; idsuiv=324; break;
         case 324 : texte = "They are hidden in 3 temples, the nearest is a tower by the waterfalls, north of here... Take this map, it will help you find your way!"; break;
-        case 325 : texte = "You got the map of Hyrule!**Press P outdoors to see it."; break;
+        case 325 : texte = "You got the map of Hyrule!**Press Y outdoors to see it."; break;
         case 326 : 
             if (!gpJeu->getJoueur()->hasMedaillon(0)) {texte = "The first pendent is in a tower North of this forest. Leave the forest by the West and head North to arrive in the waterfalls area."; break;}
             if (!gpJeu->getJoueur()->hasMedaillon(1)) {texte = "The second pendent is in the temple in the middle of the Lake. You should rent a boat at the Mabe village..."; break;}
@@ -777,7 +777,7 @@ void Texte::chercheText() {
         case 387 : texte = "The detector for 20 power gems, ok?**              YES ?            no  ";
             if (gpJeu->getJoueur()->getGemme()<20) idsuiv=385; break;
         case 388 : texte = "The detector for 20 power gems, ok?**              yes              NO ?"; break;
-        case 389 : texte = "You got the detector!*When you press enter, the number of gems in you possession is written in green if you have all the gems of the area."; break;
+	case 389 : texte = "You got the detector!*When you press start, the number of gems in you possession is written in green if you have all the gems of the area."; break;
         case 390 : 
             if (gpJeu->getJoueur()->hasBouteille(0)) {id=393; chercheText(); break;}
             texte = "An empty bottle for 10 power gems?**              YES ?            no  ";
@@ -874,7 +874,7 @@ void Texte::chercheText() {
         case 440 : texte = "I could fix the lever, but I need a replacement part, and I can't leave my post..."; idsuiv=441; break;
         case 441 : texte = "I need a cogwheel, they can be found at the marketplace of Hyrule City."; idsuiv=442; break;
         case 442 : texte = "You know how it works, don't you? Each stallholder offers some products for others, you've got to gather what they want in order to get what you want."; idsuiv=443; break;
-        case 443 : texte = "I will give you the merchandises I already have.*If you want to see what you have in you bag, press I."; break;
+        case 443 : texte = "I will give you the merchandises I already have.*If you want to see what you have in you bag, press R."; break;
         case 444 : 
             if (gpJeu->getJoueur()->getTroc(M_ROUAGE)==0) {id=446; chercheText();break;}
             if (gpJeu->getJoueur()->getTroc(M_ROUAGE)>0) {id=445; chercheText();break;}
@@ -932,7 +932,7 @@ void Texte::chercheText() {
         case 474 : texte = "Don't tell me you want to participate for free???*               yeah            NO ?"; idsuiv=476; break;
         case 475 : texte = "...*Here is a fishing rod, come back when you've caught 5 different types of fish."; break;
         case 476 : texte = "Go away, enemy of fishermen!"; break;
-        case 477 : texte = "You got a fishing rod!*Use it on a pontoon, then bring the fish up pressing X when the line is moving."; break;
+	case 477 : texte = "You got a fishing rod!*Use it on a pontoon, then bring the fish up pressing X when the line is moving."; break;
         case 478 : 
             if (gpJeu->getJoueur()->hasObjet(O_POISSONS)) {id=487; chercheText();break;}
             if (gpJeu->getJoueur()->nbPoissons()>=5) {id=479; chercheText();break;}
@@ -1153,7 +1153,7 @@ void Texte::chercheText() {
             if (gpJeu->getJoueur()->hasObjet(O_ENCYCL)) {id=593; chercheText();break;}
             texte = "Hello Link, do you remember me?"; idsuiv=590; break;
         case 590 : texte = "Monsters appeared in Hyrule today, so once again I'll try to list them all, and once again I count on your help."; idsuiv=591; break;
-        case 591 : texte = "Pressing M, you can see the monsters already listed. You just have to kill a monster to add it."; idsuiv=592; break;
+	case 591 : texte = "Pressing L, you can see the monsters already listed. You just have to kill a monster to add it."; idsuiv=592; break;
         case 592 : 
             switch (gpJeu->getEpoque()) {
                 case T_PASSE : os<<"10 Gold Coins"; break;
@@ -1803,8 +1803,7 @@ void Texte::chercheText() {
         case 939 : texte = "            Second Quest - Level 1 :                                                                               Casino"; break;
         case 940 : texte = "            Second Quest - Level 2 :                                                                            Tower of Gem"; break;
         case 941 : texte = "          Second Quest - Final Level :                                                                        Final Destination"; break;
-        
-        case 942 : texte = "You found the map!!!**Press P to see the dungeon map."; break;
+        case 942 : texte = "You found the map!!!**Press Y to see the dungeon map."; break;
         case 943 : texte = "You found the compass!!!**The Boss and chests are now indicated on the map."; break;
         case 944 : texte = "You found the Boss Key!!!**Use it to open his haunt."; break;
         case 945 : texte = "You found a little key.**Use it to unlock a door."; break;
@@ -1914,7 +1913,7 @@ void Texte::chercheText() {
             texte = "The Princess instructed you with investigating the Ocarina theft? *In that case you can go. There is nothing left to steal anyway..."; break;
         case 1023: texte = "I was guarding this door last night. I am absolutely sure no one came through it..."; break;
         case 1024: texte = "That's where the Ocarina was kept. The guard heard a big noise. But before he realized it was coming from inside the room, the safe had been cleared out."; idsuiv=1025; break;
-        case 1025: texte = "If you see anything suspicious, go in front of it and press SPACE to point it out to me."; break;
+        case 1025: texte = "If you see anything suspicious, go in front of it and press A to point it out to me."; break;
         case 1026: texte = "It's a torch... What were you expecting for? A ceiling chandelier?"; break;
         case 1027: texte = "This safe is the one in which the Ocarina was kept. Until last night..."; break;
         case 1028: 
@@ -1925,8 +1924,8 @@ void Texte::chercheText() {
         case 1031: texte = "So that's where the thief came from! *What are you waiting for? Go after him!"; break;
         case 1032: texte = "I feel forgotten... *Here I am, guarding a safety vault empty and wide open..."; break;
         case 1033: texte = "The thief is probably in this forest, you can't give up now!"; break;
-        case 1034: texte = "TUTORIAL : Press C in front of a light object like a jar in order to lift it up. Press a second time to throw it."; break;
-        case 1035: texte = "TUTORIAL : Press SPACE in front of a chest to open it. You can open a chest only if you are down it."; break;
+        case 1034: texte = "TUTORIAL : Press B in front of a light object like a jar in order to lift it up. Press a second time to throw it."; break;
+        case 1035: texte = "TUTORIAL : Press A in front of a chest to open it. You can open a chest only if you are down it."; break;
         case 1036: texte = "                 Hyrule Castle"; break;
         case 1037: texte = "This way leads to the prison cells, you have nothing to do there."; break;
         case 1038: texte = "This way leads to a very high safety zone. Even the Hero of Hyrule is not allowed to go in."; break;
@@ -2408,7 +2407,11 @@ void Texte::chercheText() {
             if (gpJeu->getJoueur()->getCoffre(14,15)) {id=1334; chercheText();break;}
             if (gpJeu->getJoueur()->getCompteurEnn() >= 50 && gpJeu->getJoueur()->getCompteurType() >= 7) {id=1335; chercheText();break;}
             texte = "Eliminate at least 50 enemies of 7 various types and I will open the door."; break;
+#ifdef OPENDINGUX
+        case 1342: texte = "You have found the Mask of Oni Link !!! *Use 'L' to transform yourself and become incredibly powerful."; break;
+#else
         case 1342: texte = "You have found the Mask of Oni Link !!! *Use 'O' to transform yourself and become incredibly powerful."; break;
+#endif
         case 1343: texte = "Congratulations Link! You've defeated every single type of enemy... It's incredible..."; idsuiv=1344; break;
         case 1344: texte = "I owe you a lot, do you want to be paid now?"; idsuiv=1345; break;
         case 1345: texte = "I'm finally able to take back my original form, be ready to take a lot!*Farewell, Hero of Hyrule!"; break;
@@ -2438,7 +2441,7 @@ void Texte::chercheText() {
         case 1364: texte = "But both of them perfectly knew that, from the bottom of hell, Ganon the immortal drawed his power from his"; buffer="first wish to the Triforce, and rounded up his army with a view to invade Hyrule."; idsuiv=1365; break;
         case 1365: texte = "Until the day when, after months spent watching out for an attack, an event came up and put an end to this endless waiting..."; break;
         case 1366: texte = "HELLOOO !!! *MY LORD LINK !!!"; break;
-        case 1367: texte = "HELP : Press F1 to consult the help."; break;
+        case 1367: /*texte = "HELP : Press F1 to consult the help.";*/ break;
         case 1368: texte = "Come back when you'll have a wallet and we'll talk business."; break;
         case 1369: texte = "We heard sounds of battle, and nothing more..."; break;
         case 1370: texte = "What, by all heavens, can have happened?"; break;

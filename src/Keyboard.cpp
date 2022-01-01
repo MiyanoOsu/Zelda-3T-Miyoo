@@ -9,8 +9,7 @@
 */
 
 #include <iostream>
-#include <sys/types.h>
-#include <sys/stat.h>
+
 #include <SDL/SDL.h>
 
 #include "Keyboard.h"
@@ -43,19 +42,18 @@ SDL_Surface* screen, int m, bool e) :
     volume(32), volson(32), ligneRecord(3), colonneRecord(0), temps(0), ligneVal(0), 
     intro(0), telep(0), etire(e) {
     for (int i = 0; i < 3; i++) save[i]=0;
-    for (int i = 0; i < 3; i++) rang[i]=0;
+    for (int i = 0; i < 9; i++) rang[i]=0;
     loadP();
     gpJeu->getAudio()->setVolume(volume);
     gpJeu->getAudio()->setVolson(volson);
 }
-
 
 void Keyboard::saveP() {
     ofstream f("data/save/system.dat",ios::out | ios::binary);
     f.write((char *)&volume,sizeof(int));
     f.write((char *)&volson,sizeof(int));
     f.write((char *)&temps,sizeof(int));
-    for (int i = 0; i < 3; i++) f.write((char *)&rang[i],sizeof(int));
+    for (int i = 0; i < 3; i++) f.write((char *)&rang[6+i],sizeof(int));
     f.close();
 }
 
@@ -65,7 +63,7 @@ void Keyboard::loadP() {
     f.read((char *)&volume,sizeof(int));
     f.read((char *)&volson,sizeof(int));
     f.read((char *)&temps,sizeof(int));
-    for (int i = 0; i < 3; i++) f.read((char *)&rang[i],sizeof(int));
+    for (int i = 0; i < 3; i++) f.read((char *)&rang[6+i],sizeof(int));
     f.close();
 }
 
@@ -116,6 +114,9 @@ int Keyboard::gererClavier() {
 }
 
 void Keyboard::toggleFullScreen() {
+#ifdef OPENDINGUX
+	return;
+#endif
     gFullScreen = (gFullScreen ? 0 : SDL_FULLSCREEN);
     gFullScreen ? SDL_ShowCursor(SDL_DISABLE) : SDL_ShowCursor(SDL_ENABLE);
     if (etire || gFullScreen == 0) {
@@ -904,7 +905,7 @@ void Keyboard::pollKeys(Uint8* keys) {
                 mode = 15;
                 if (ligneVal==0) {
                     gpJeu->getAudio()->playSound(2);
-                    temps=0; for (int i = 0; i < 3; i++) rang[i]=0; saveP();
+                    temps=0; for (int i = 0; i < 3; i++) rang[6+i]=0; saveP();
                 }
                 else gpJeu->getAudio()->playSound(1);
                 gpJeu->getGenerique()->initRecord();

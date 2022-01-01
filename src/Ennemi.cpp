@@ -3503,6 +3503,14 @@ bool Ennemi::isBoss() {
 }
 
 void Ennemi::init() {
+	
+	//Shin-NiL (hmn) memory leak correction
+    if (zonesAttaques) delete zonesAttaques;
+    zonesAttaques = NULL;
+    if (zonesVulnerables) delete zonesVulnerables;
+    zonesVulnerables = NULL;
+    //END
+	
     x=xdep; y=ydep; direction=S; anim=0; if (id!=20 && id!=88) special1=0; special2=0;
     vanim=240; vol=0; nage=0; spectre=0; porte=0; typeIA=IA_RIEN; 
     vitesse=1; force=0; recul=16; glace=0; maxglace=60; typeEnn=E_SIMPLE;

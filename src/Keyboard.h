@@ -76,7 +76,7 @@ class Keyboard {
         int ligneRecord;
         int colonneRecord;
         int temps;
-        int rang[3];
+        int rang[9];
         int ligneVal;
         int intro;
         int telep;

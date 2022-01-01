@@ -15,7 +15,8 @@
 Generique::Generique(Jeu* jeu) : gpJeu(jeu), anim(0) {
     imageFin = NULL;
     imageArbre = NULL;
-    image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+
+    image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 16, 0, 0, 0, 0);
     imageTitre = IMG_Load("data/images/logos/titre.png");
     SDL_SetColorKey(imageTitre,SDL_SRCCOLORKEY,SDL_MapRGB(imageTitre->format,0,0,255));
     imageCurseur = IMG_Load("data/images/logos/curseur.png");
@@ -88,11 +89,16 @@ void Generique::initTitre() {
     SDL_Surface* fond = IMG_Load("data/images/logos/fond.png");
     dst.x = 0; dst.y = 0; SDL_BlitSurface(fond, NULL, image, &dst);
     SDL_FreeSurface(fond);
-    SDL_Surface* logo = IMG_Load("data/images/logos/titre.png");
-    SDL_SetColorKey(logo,SDL_SRCCOLORKEY,SDL_MapRGB(logo->format,0,0,255));
-    logo = SDL_DisplayFormat(logo);
+    //Shin-NiL memory leak correction
+    SDL_Surface* tempLogo = IMG_Load("data/images/logos/titre.png");
+    SDL_Surface* logo = NULL;
+
+    SDL_SetColorKey(tempLogo,SDL_SRCCOLORKEY,SDL_MapRGB(tempLogo->format,0,0,255));
+    logo = SDL_DisplayFormat(tempLogo);
+    SDL_FreeSurface(tempLogo);
     dst.x = 76; dst.y = 53; SDL_BlitSurface(logo, NULL, image, &dst);
     SDL_FreeSurface(logo);
+    //End
 }
 
 void Generique::initSelection() {
@@ -218,6 +224,8 @@ void Generique::initSelection() {
             
             gpJeu->getKeyboard()->setSave(i,1);
         }else gpJeu->getKeyboard()->setSave(i,0);
+        //Shin-NiL memory leak correction
+    	if (gpJoueur) delete gpJoueur;
     }
     
     SDL_FreeSurface(objets);
@@ -452,7 +460,11 @@ void Generique::initAide1() {
     
     cadre(16,192+8,288,32);
     
+#ifdef OPENDINGUX    
+    gpJeu->affiche(image, "Return to the game: Start - Next: Right", 24, 208);
+#else
     gpJeu->affiche(image, "Return to the game: Enter - Next: Right", 24, 208);
+#endif
     
     int ligne = 64;
     Joueur* gpJoueur = gpJeu->getJoueur();
@@ -908,7 +920,11 @@ void Generique::cadre(int x, int y, int w, int h) {
 void Generique::initScore() {
     SDL_FreeSurface(imageArbre);
     imageArbre = IMG_Load("data/images/logos/arbre.png");
+#ifdef OPENDINGUX
+    image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 16, 0, 0, 0, 0);
+#else
     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+#endif
     
     SDL_Rect dst; 
     
