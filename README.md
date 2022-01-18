@@ -9,4 +9,3 @@ You can make it by your own.
 
 
 - Original Game And Develope: Vincent Jouillat
-- Miyoo patch: Miyano.
