@@ -1,4 +1,4 @@
-# Zelda-3T-Miyoo
+# Zelda_Time_to_Triumph 
 
 The Legend of Zelda - Time to Triumph (port miyoo)
 For powkiddy Q90/V90
